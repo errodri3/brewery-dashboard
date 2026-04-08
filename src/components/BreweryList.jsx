@@ -1,27 +1,49 @@
 function BreweryList({ breweries }) {
+  if (breweries.length === 0) {
+    return (
+      <div className="brewery-table-wrap">
+        <p className="empty-state">No breweries match your search.</p>
+      </div>
+    )
+  }
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Website</th>
-        </tr>
-      </thead>
-      <tbody>
-        {breweries.map((brewery) => (
-          <tr key={brewery.id}>
-            <td>{brewery.name}</td>
-            <td>{brewery.brewery_type}</td>
-            <td>{brewery.city}</td>
-            <td>{brewery.state_province}</td>
-            <td>{brewery.website_url || 'N/A'}</td>
+    <div className="brewery-table-wrap">
+      <table className="brewery-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Website</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {breweries.map((brewery) => (
+            <tr key={brewery.id}>
+              <td>{brewery.name}</td>
+              <td>
+                <span className={`type-badge ${brewery.brewery_type}`}>
+                  {brewery.brewery_type}
+                </span>
+              </td>
+              <td>{brewery.city}</td>
+              <td>{brewery.state_province}</td>
+              <td>
+                {brewery.website_url ? (
+                  <a href={brewery.website_url} target="_blank" rel="noreferrer">
+                    {brewery.website_url.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                  </a>
+                ) : (
+                  <span style={{ color: 'var(--text-muted)' }}>N/A</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

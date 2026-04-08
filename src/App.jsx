@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react'
 import BreweryList from './components/BreweryList'
 import SummaryStats from './components/SummaryStats'
+import NavBar from './components/NavBar'
+import About from './components/About'
+import './App.css'
 
 function App() {
   const [breweries, setBreweries] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [filterType, setFilterType] = useState('all')
   const [stateFilter, setStateFilter] = useState('')
+  const [currentPage, setCurrentPage] = useState('dashboard')
 
   useEffect(() => {
     const fetchBreweries = async () => {
@@ -29,39 +33,51 @@ function App() {
     )
 
   return (
-    <div>
-      <h1>Brewery Dashboard</h1>
-      <SummaryStats breweries={filteredBreweries} />
-      <p>Showing {filteredBreweries.length} breweries</p>
+    <div className="app-layout">
+      <NavBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      <input
-        type="text"
-        placeholder="Search breweries..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+      <main className="app-main">
+        {currentPage === 'dashboard' && (
+          <>
+            <SummaryStats breweries={filteredBreweries} />
+            <p className="showing-count">Showing {filteredBreweries.length} breweries</p>
 
-      <select
-        value={filterType}
-        onChange={(e) => setFilterType(e.target.value)}
-      >
-        <option value="all">All Types</option>
-        <option value="micro">Micro</option>
-        <option value="brewpub">Brewpub</option>
-        <option value="large">Large</option>
-        <option value="regional">Regional</option>
-        <option value="closed">Closed</option>
-        <option value="proprietor">Proprietor</option>
-      </select>
+            <div className="controls">
+              <input
+                className="search-input"
+                type="text"
+                placeholder="Search breweries..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <select
+                className="filter-select"
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value)}
+              >
+                <option value="all">All Types</option>
+                <option value="micro">Micro</option>
+                <option value="brewpub">Brewpub</option>
+                <option value="large">Large</option>
+                <option value="regional">Regional</option>
+                <option value="closed">Closed</option>
+                <option value="proprietor">Proprietor</option>
+              </select>
+              <input
+                className="state-input"
+                type="text"
+                placeholder="Filter by state..."
+                value={stateFilter}
+                onChange={(e) => setStateFilter(e.target.value)}
+              />
+            </div>
 
-      <input
-        type="text"
-        placeholder="Filter by state..."
-        value={stateFilter}
-        onChange={(e) => setStateFilter(e.target.value)}
-      />
+            <BreweryList breweries={filteredBreweries} />
+          </>
+        )}
 
-      <BreweryList breweries={filteredBreweries} />
+        {currentPage === 'about' && <About />}
+      </main>
     </div>
   )
 }

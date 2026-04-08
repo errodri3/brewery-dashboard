@@ -9,21 +9,21 @@ function SummaryStats({ breweries }) {
   })
   const mostCommonType = Object.keys(typeCounts).sort(
     (a, b) => typeCounts[b] - typeCounts[a]
-  )[0]
+  )[0] || '—'
 
   return (
-    <div>
-      <div>
-        <h3>Total Breweries</h3>
-        <p>{totalCount}</p>
+    <div className="stats-grid">
+      <div className="stat-card">
+        <div className="stat-label">Total Breweries</div>
+        <div className="stat-value">{totalCount}</div>
       </div>
-      <div>
-        <h3>Most Common Type</h3>
-        <p>{mostCommonType}</p>
+      <div className="stat-card">
+        <div className="stat-label">Most Common Type</div>
+        <div className="stat-value">{mostCommonType}</div>
       </div>
-      <div>
-        <h3>Have a Website</h3>
-        <p>{withWebsite}</p>
+      <div className="stat-card">
+        <div className="stat-label">Have a Website</div>
+        <div className="stat-value">{withWebsite}</div>
       </div>
     </div>
   )
