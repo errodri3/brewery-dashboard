@@ -3,6 +3,7 @@ import BreweryList from './components/BreweryList'
 
 function App() {
   const [breweries, setBreweries] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     const fetchBreweries = async () => {
@@ -13,11 +14,21 @@ function App() {
     fetchBreweries()
   }, [])
 
+  const filteredBreweries = breweries.filter((brewery) =>
+    brewery.name.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
   return (
     <div>
       <h1>Brewery Dashboard</h1>
-      <p>Loaded {breweries.length} breweries</p>
-      <BreweryList breweries={breweries} />
+      <p>Showing {filteredBreweries.length} breweries</p>
+      <input
+        type="text"
+        placeholder="Search breweries..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <BreweryList breweries={filteredBreweries} />
     </div>
   )
 }
