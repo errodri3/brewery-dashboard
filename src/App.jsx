@@ -6,6 +6,7 @@ function App() {
   const [breweries, setBreweries] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [filterType, setFilterType] = useState('all')
+  const [stateFilter, setStateFilter] = useState('')
 
   useEffect(() => {
     const fetchBreweries = async () => {
@@ -23,10 +24,14 @@ function App() {
     .filter((brewery) =>
       filterType === 'all' ? true : brewery.brewery_type === filterType
     )
+    .filter((brewery) =>
+      stateFilter === '' ? true : brewery.state_province.toLowerCase().includes(stateFilter.toLowerCase())
+    )
 
   return (
     <div>
       <h1>Brewery Dashboard</h1>
+      <SummaryStats breweries={filteredBreweries} />
       <p>Showing {filteredBreweries.length} breweries</p>
 
       <input
@@ -49,8 +54,14 @@ function App() {
         <option value="proprietor">Proprietor</option>
       </select>
 
+      <input
+        type="text"
+        placeholder="Filter by state..."
+        value={stateFilter}
+        onChange={(e) => setStateFilter(e.target.value)}
+      />
+
       <BreweryList breweries={filteredBreweries} />
-      <SummaryStats breweries={filteredBreweries} />
     </div>
   )
 }
