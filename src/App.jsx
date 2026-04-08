@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import BreweryList from './components/BreweryList'
+import SummaryStats from './components/SummaryStats'
 
 function App() {
   const [breweries, setBreweries] = useState([])
@@ -49,6 +50,7 @@ function App() {
       </select>
 
       <BreweryList breweries={filteredBreweries} />
+      <SummaryStats breweries={filteredBreweries} />
     </div>
   )
 }
