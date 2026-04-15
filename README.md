@@ -1,3 +1,4 @@
+![Project6Part2_Demo](https://github.com/user-attachments/assets/edc313f5-9257-48c6-a985-048b40379d64)
 # Web Development Project 5 - Brewery Dashboard (Part 1)
 
 Submitted by: Evelyn Rodriguez
@@ -78,7 +79,7 @@ Describe any challenges encountered while building the app
 
 Submitted by: Evelyn Rodriguez
 
-This web app: Data dashboard that provides public information on breweries, cideries, brewpubs, and bottleshops.
+This web app: Data dashboard that provides public information on breweries, cideries, brewpubs, and bottleshops with data visualizations.
 
 Time spent: 3 hours spent in total
 
@@ -112,7 +113,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/user-attachments/assets/86bf32b9-68f5-4ad5-945b-54b7993ec020)' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 
