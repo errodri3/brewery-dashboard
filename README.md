@@ -112,7 +112,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/user-attachments/assets/86bf32b9-68f5-4ad5-945b-54b7993ec020)' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/user-attachments/assets/6f132d9b-889c-4ec7-aca9-209f3f722af3' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 
