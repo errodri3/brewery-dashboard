@@ -1,7 +1,11 @@
-function NavBar({ currentPage, setCurrentPage }) {
+import { Link, useLocation } from 'react-router-dom'
+
+function NavBar() {
+  const location = useLocation()
+
   const links = [
-    { id: 'dashboard', label: 'Dashboard', emoji: '🏠' },
-    { id: 'about',     label: 'About',     emoji: 'ℹ️'  },
+    { path: '/',       label: 'Dashboard', emoji: '🏠' },
+    { path: '/about',  label: 'About',     emoji: 'ℹ️' },
   ]
 
   return (
@@ -12,13 +16,13 @@ function NavBar({ currentPage, setCurrentPage }) {
       </div>
       <ul className="navbar-links">
         {links.map((link) => (
-          <li key={link.id}>
-            <button
-              className={`nav-link ${currentPage === link.id ? 'active' : ''}`}
-              onClick={() => setCurrentPage(link.id)}
+          <li key={link.path}>
+            <Link
+              to={link.path}
+              className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
             >
               <span>{link.emoji}</span> {link.label}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
