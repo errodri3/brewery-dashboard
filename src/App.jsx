@@ -4,6 +4,8 @@ import BreweryList from './components/BreweryList'
 import SummaryStats from './components/SummaryStats'
 import NavBar from './components/NavBar'
 import About from './components/About'
+import BreweryDetail from './components/BreweryDetail'
+import BreweryCharts from './components/BreweryCharts'
 import './App.css'
 
 function App() {
@@ -11,6 +13,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterType, setFilterType] = useState('all')
   const [stateFilter, setStateFilter] = useState('')
+  const [showCharts, setShowCharts] = useState(true)
 
   useEffect(() => {
     const fetchBreweries = async () => {
@@ -35,6 +38,21 @@ function App() {
           <Route path="/" element={
             <>
               <SummaryStats breweries={filteredBreweries} />
+
+              <div className="dashboard-intro">
+                <p className="dashboard-description">
+                  Micro breweries make up the majority of the dataset — try filtering by type or state to explore different brewing scenes across the country. Use the charts below to spot trends at a glance.
+                </p>
+                <button
+                  className="toggle-charts-btn"
+                  onClick={() => setShowCharts((prev) => !prev)}
+                >
+                  {showCharts ? 'Hide Charts' : 'Show Charts'}
+                </button>
+              </div>
+
+              {showCharts && <BreweryCharts breweries={filteredBreweries} />}
+
               <p className="showing-count">Showing {filteredBreweries.length} breweries</p>
               <div className="controls">
                 <input
@@ -69,6 +87,7 @@ function App() {
             </>
           } />
           <Route path="/about" element={<About />} />
+          <Route path="/brewery/:id" element={<BreweryDetail />} />
         </Routes>
       </main>
     </div>

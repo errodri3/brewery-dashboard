@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function BreweryList({ breweries }) {
   if (breweries.length === 0) {
     return (
@@ -22,7 +24,11 @@ function BreweryList({ breweries }) {
         <tbody>
           {breweries.map((brewery) => (
             <tr key={brewery.id}>
-              <td>{brewery.name}</td>
+              <td>
+                <Link to={`/brewery/${brewery.id}`} className="brewery-name-link">
+                  {brewery.name}
+                </Link>
+              </td>
               <td>
                 <span className={`type-badge ${brewery.brewery_type}`}>
                   {brewery.brewery_type}

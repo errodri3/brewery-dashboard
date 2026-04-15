@@ -216,7 +216,7 @@
 .app-main {
   flex: 1;
   padding: 2rem 2.5rem 4rem;
-  min-width: 0; /* prevents flex overflow */
+  min-width: 0;
 }
 
 /* ── NavBar ──────────────────────────────────────────── */
@@ -343,6 +343,155 @@
   color: var(--amber);
 }
 
+/* ── Charts ──────────────────────────────────────────── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: var(--white);
+  border: 1px solid var(--tan);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-title {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber-dark);
+  margin-bottom: 1rem;
+}
+
+/* ── Detail Page ─────────────────────────────────────── */
+.detail-page {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--amber-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.back-link:hover {
+  color: var(--brown);
+  text-decoration: underline;
+}
+
+.detail-card {
+  background: var(--white);
+  border: 1px solid var(--tan);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.detail-header h2 {
+  font-size: 1.6rem;
+  color: var(--brown);
+  margin: 0;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.detail-website {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: var(--parchment);
+  border: 1.5px solid var(--tan);
+  border-radius: var(--radius-sm);
+  color: var(--amber-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.detail-website:hover {
+  background: #f5e8d0;
+  border-color: var(--amber);
+}
+
+/* ── Dashboard Intro ─────────────────────────────────── */
+.dashboard-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-description {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0;
+}
+
+.toggle-charts-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 1.25rem;
+  background: var(--parchment);
+  border: 1.5px solid var(--tan);
+  border-radius: var(--radius-sm);
+  color: var(--amber-dark);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.toggle-charts-btn:hover {
+  background: #f5e8d0;
+  border-color: var(--amber);
+}
+
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 640px) {
   .app-layout {
@@ -364,5 +513,13 @@
   .navbar-links {
     flex-direction: row;
     margin-left: auto;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
   }
 }
