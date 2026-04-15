@@ -1,4 +1,3 @@
-![Project6Part2_Demo](https://github.com/user-attachments/assets/edc313f5-9257-48c6-a985-048b40379d64)
 # Web Development Project 5 - Brewery Dashboard (Part 1)
 
 Submitted by: Evelyn Rodriguez
